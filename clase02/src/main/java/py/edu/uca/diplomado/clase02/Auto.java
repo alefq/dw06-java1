@@ -7,6 +7,10 @@ public class Auto {
 	String modelo;
 	int velocidad;
 
+	public Auto() {
+		setMarca("Sin marca");
+	}
+	
 	/*
 	 * Definimos un método. Los métodos se recomienda que expresen una acción,
 	 * con el infinitivo o por ejemplo getAlgo setAlgo
@@ -14,11 +18,35 @@ public class Auto {
 	/**
 	 * Se arranca el motor del auto y se coloca la velocidad a 0
 	 * */
-	void arrancar() {
+	public void arrancar() {
 		System.out.println("Arrancando");
 	}
 
 	void acelerar() {
 		velocidad++;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public int getVelocidad() {
+		return velocidad;
+	}
+
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
 	}
 }

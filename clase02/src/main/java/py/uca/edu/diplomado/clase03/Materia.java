@@ -1,4 +1,8 @@
-package py.edu.uca.diplomado.clase02;
+package py.uca.edu.diplomado.clase03;
+
+import py.edu.uca.diplomado.clase02.Alumno;
+import py.edu.uca.diplomado.clase02.Auto;
+import py.edu.uca.diplomado.clase02.Profesor;
 
 public class Materia {
 	/*
@@ -19,7 +23,16 @@ public class Materia {
 
 	static Alumno alumno;
 	static Profesor profesor;
+	private String codigo;
 
+	public Materia() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Materia(String codigo) {
+		setCodigo(codigo);
+		inicializarMateria();
+	}
 	/*
 	 * El método main con esta firma convierte a esta clase Java en una
 	 * aplicación Java, es decir puede ejecutarse directamente
@@ -32,6 +45,14 @@ public class Materia {
 		 * String
 		 */
 		System.out.println(new String("Hello World!"));
+		inicializarMateria();
+		
+		System.out.println("Alumno: " + alumno.getNombre());
+		System.out.println("Profesor: " + profesor.getNombre());
+	}
+
+	public static void inicializarMateria() {
+		Auto auxilio = new Auto();
 		/* Creamos una nueva instancia de la clase Auto */
 		transporte = new Auto();
 		/* Enviamoe el mensaje de arrancar a la clase recientemente creada */
@@ -43,9 +64,19 @@ public class Materia {
 		alumno.setNombre("Ale");
 		profesor.setNombre("Luca");
 		alumno.setNumeroMatricula(1);
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+	
+	public static void describirMateria()
+	{
 		
-		System.out.println("Alumno: " + alumno.getNombre());
-		System.out.println("Profesor: " + profesor.getNombre());
 	}
 
 }
