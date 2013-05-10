@@ -2,7 +2,9 @@ package py.edu.uca.diplomado.clase02;
 
 import java.io.Serializable;
 
-public class Alumno extends Persona implements Serializable {
+import py.edu.uca.diplomado.clase04.interfaces.Volador;
+
+public class Alumno extends Persona implements Serializable, Volador {
 	/**
 	 * 
 	 */
@@ -48,5 +50,16 @@ public class Alumno extends Persona implements Serializable {
 
 	private String getPassword() {
 		return "";
+	}
+	
+	@Override
+	public String getNroIdentidad() {
+		// TODO Auto-generated method stub
+		return ""+getNumeroMatricula();
+	}
+
+	public void volar() {
+		System.out.println("Volando Alumno");
+		
 	}
 }

@@ -2,7 +2,9 @@ package py.edu.uca.diplomado.clase02;
 
 import java.io.Serializable;
 
-public class Persona implements Serializable {
+import py.edu.uca.poo.identidad.Identificable;
+
+public class Persona implements Identificable, Serializable {
 	/*
 	 * Convertimos nuestra clase Persona al estandar Java Bean. Implementamos la
 	 * interfaz Serializable. Mediante las interfaces establecemos un protocolo,
@@ -93,6 +95,17 @@ public class Persona implements Serializable {
 	@Override
 	public String toString() {
 		return getNombre() + " " + getApellido();
+	}
+
+	public String getNroIdentidad() {
+		// TODO Auto-generated method stub
+//		return ""+getNumeroCedula();
+		return Integer.toString(getNumeroCedula());
+	}
+
+	public String getCodigoISOPais() {
+		// TODO Auto-generated method stub
+		return CODIGO_ISO_PARAGUAY;
 	}
 
 }

@@ -1,5 +1,6 @@
 package py.edu.uca.diplomado.clase04;
 
+import py.edu.uca.diplomado.clase02.Alumno;
 import py.edu.uca.diplomado.clase04.interfaces.Mentiroso;
 import py.edu.uca.diplomado.clase04.interfaces.Peleador;
 import py.edu.uca.diplomado.clase04.interfaces.Volador;
@@ -12,11 +13,15 @@ public class BatallaApp {
 	public static void main(String[] args) {
 		BatallaApp batalla = new BatallaApp();
 		Superman superman = new Superman();
+		Alumno alumno = new Alumno();
 		AntiHeroe antiHeroe = new AntiHeroe();
 //
-//		batalla.hacerVolar(superman, antiHeroe);
+		batalla.hacerVolar(superman, antiHeroe);
+		
+		batalla.hacerVolar(superman, alumno);
+
 //
-//		batalla.hacerPelear(superman, antiHeroe);
+		batalla.hacerPelear(superman, antiHeroe);
 //
 //		batalla.hacerMentir(superman, antiHeroe);
 	}
