@@ -37,4 +37,16 @@ public class Alumno extends Persona implements Serializable {
 	public void setNumeroMatricula(int numeroMatricula) {
 		this.numeroMatricula = numeroMatricula;
 	}
+
+	@Override
+	public String toString() {
+		// return getNombre() + " " + getApellido() + "(" + getNumeroMatricula()
+		// + ")";
+		getPassword();
+		return super.toString() + "(" + getNumeroMatricula() + ")";
+	}
+
+	private String getPassword() {
+		return "";
+	}
 }

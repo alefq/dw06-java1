@@ -89,5 +89,10 @@ public class Persona implements Serializable {
 	public void setNumeroCedula(int numeroCedula) {
 		this.numeroCedula = numeroCedula;
 	}
+	
+	@Override
+	public String toString() {
+		return getNombre() + " " + getApellido();
+	}
 
 }

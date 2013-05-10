@@ -2,7 +2,9 @@ package py.edu.uca.diplomado.clase04.referencia;
 
 
 public class Perro {
+	/*Inicialización con el constructor*/
 	public static final Integer FRECUENCIA_NORMAL = new Integer(512);
+	/*Inicialización con autoboxing*/
 	public static final Integer FRECUENCIA_ALTA = 11000;
 	public static final Integer FRECUENCIA_BAJA = 50;
 	private Integer frecuenciaLadrido;
@@ -56,6 +58,10 @@ public class Perro {
 		 */
 		perro = perro2;
 		System.out.println("Perro: " + perro.getNombre());
+		
+		Yorkshire perro3 = new Yorkshire();
+		perro.ladrar();
+		perro3.ladrar();
 
 	}
 
@@ -75,7 +81,7 @@ public class Perro {
 
 	public void ladrar() {
 		System.out.println("Emitiendo ladrido con frecuencia:"
-				+ getFrecuenciaLadrido());
+				+ getFrecuenciaLadrido() + ". Perro: "+ getClass().getName());
 	}
 	
 	public static void rodar(){

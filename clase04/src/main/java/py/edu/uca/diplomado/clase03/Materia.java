@@ -70,8 +70,13 @@ public class Materia {
 		setProfesor(new Profesor());
 
 		getAlumno().setNombre("Ale");
+		getAlumno().setApellido("Feltes");
 		getProfesor().setNombre("Luca");
-		getAlumno().setNumeroMatricula(1);
+		getProfesor().setApellido("Cernuzzi");
+		getAlumno().setNumeroMatricula(37122);
+		System.out.println("Alumno: " + getAlumno());
+		System.out.println("Profesor: " + getProfesor());
+
 	}
 
 	public String getCodigo() {
