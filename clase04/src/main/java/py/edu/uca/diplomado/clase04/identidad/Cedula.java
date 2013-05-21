@@ -1,4 +1,4 @@
-package py.edu.uca.poo.identidad;
+package py.edu.uca.diplomado.clase04.identidad;
 
 public class Cedula extends DocumentoIdentidad {
 

@@ -2,7 +2,7 @@ package py.edu.uca.diplomado.clase02;
 
 import java.io.Serializable;
 
-import py.edu.uca.poo.identidad.Identificable;
+import py.edu.uca.diplomado.clase04.identidad.Identificable;
 
 public class Persona implements Identificable, Serializable {
 	/*

@@ -1,11 +1,15 @@
 package py.edu.uca.diplomado.clase04;
 
 import py.edu.uca.diplomado.clase02.Persona;
+import py.edu.uca.diplomado.clase04.interfaces.Cotizable;
 import py.edu.uca.diplomado.clase04.interfaces.Peleador;
 import py.edu.uca.diplomado.clase04.interfaces.Volador;
 
-public class Superman extends Persona implements Volador, Peleador {
-
+public class Superman extends Persona implements Volador, Peleador, Cotizable {
+	/*
+	 * Hacemos que la calse Superman herede de Persona, y además que implemente
+	 * las capacidades/protocolos/comportamientos de Volador y Peleador
+	 */
 	/**
 	 * 
 	 */
@@ -38,5 +42,14 @@ public class Superman extends Persona implements Volador, Peleador {
 		System.out.println("Peleando Superman");
 
 	}
+
+	public Long getPrecio(String identificador) {
+		return 1000l;
+	}
+
+	public String getColorCapa() {
+		return "roja";
+	}
+
 
 }

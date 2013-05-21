@@ -1,4 +1,4 @@
-package py.edu.uca.poo.identidad;
+package py.edu.uca.diplomado.clase04.identidad;
 
 /**
  * Definimos una interfaz que deben implementar todas las Clases que deban ser Identificables

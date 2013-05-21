@@ -6,7 +6,15 @@ import java.util.List;
 import java.util.ListIterator;
 
 public class ListaJava1 implements List<String> {
+	/*
+	 * Implementamos la intefaz java.util.list y declaramos de tipo String los
+	 * elementos que vamos a almacenar, mediante el generics <String>
+	 */
 
+	/*
+	 * El asistente del eclipse nos genera automáticamente Stubs para cumplir
+	 * con el contrato de la Interfaz implementada
+	 */
 	public boolean add(String e) {
 		// TODO Auto-generated method stub
 		return false;

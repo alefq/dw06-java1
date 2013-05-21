@@ -1,9 +1,9 @@
 package py.edu.uca.diplomado.clase04.instrumento;
 
-public class Note {
+public class Nota {
 
 	private Double frecuencia;
-	public static final Note MIDDLE_C = new Note();
+	public static final Nota MIDDLE_C = new Nota();
 
 	public void setFrecuencia(Double frecuencia) {
 		this.frecuencia = frecuencia;

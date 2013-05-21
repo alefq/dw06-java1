@@ -8,7 +8,10 @@ import java.util.ListIterator;
 import py.edu.uca.diplomado.clase02.Persona;
 
 public class PersonasList implements List<Persona> {
-
+	/*
+	 * Declaramos una clase que implementa una lista (java.util.list) de
+	 * Personas
+	 */
 	public boolean add(Persona e) {
 		// TODO Auto-generated method stub
 		return false;
@@ -16,7 +19,7 @@ public class PersonasList implements List<Persona> {
 
 	public void add(int index, Persona element) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public boolean addAll(Collection<? extends Persona> c) {
@@ -31,7 +34,7 @@ public class PersonasList implements List<Persona> {
 
 	public void clear() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public boolean contains(Object o) {
