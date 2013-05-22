@@ -1,8 +1,12 @@
 package py.edu.uca.diplomado.clase05;
 
+import java.io.IOException;
+
 import py.edu.uca.diplomado.clase01.Materia;
 import py.edu.uca.diplomado.clase02.Alumno;
+import py.edu.uca.diplomado.clase02.Persona;
 import py.edu.uca.diplomado.clase02.Profesor;
+import py.edu.uca.diplomado.clase05.exception.NacionalidadException;
 
 public class InscripcionApp {
 
@@ -26,6 +30,9 @@ public class InscripcionApp {
 		Alumno alumno = new Alumno("Rachel", "Green", 42);
 		Alumno alumno2 = new Alumno("Monica", "Geller", 17);
 
+		alumno2.setNumeroMatricula(1235);
+		alumno2.setCodigoPais("AR");
+		
 		/* Asignamos el profesor */
 		poojava.setProfesor(profesor);
 		/* Asignamos el nombre de la materia */
@@ -39,23 +46,28 @@ public class InscripcionApp {
 		poojava.getAlumnos().add(alumno2);
 
 		/* Encapsulamos la forma de inscribir alumnos */
-		// try {
-		// try {
-		// poojava.inscribirAlumno(alumno2);
-		// } catch (Exception e) {
-		// e.printStackTrace();
-		// }
-		// } catch (EdadInsuficienteException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		//
+
+		inscribirAlumnos(poojava, alumno, alumno2);
+
 		/*
 		 * Invocamos el método toString de la materia, para imprimir en consola
 		 * la representación en forma de una cadena de caracteres de la Materia
 		 */
 		System.out.println(poojava.toString());
 
+	}
+
+	private static void inscribirAlumnos(Materia poojava, Alumno alumno,
+			Alumno alumno2) {
+		try {
+			poojava.inscribirPersona(alumno);
+			poojava.inscribirPersona(alumno2);
+		} catch (NacionalidadException e) {
+			Persona.tratarNacionalidadException(e);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -3,8 +3,9 @@ package py.edu.uca.diplomado.clase02;
 import java.io.Serializable;
 
 import py.edu.uca.diplomado.clase04.identidad.Identificable;
+import py.edu.uca.diplomado.clase05.exception.NacionalidadException;
 
-public class Persona implements Identificable, Serializable {
+public abstract class Persona implements Identificable, Serializable {
 	/*
 	 * Convertimos nuestra clase Persona al estandar Java Bean. Implementamos la
 	 * interfaz Serializable. Mediante las interfaces establecemos un protocolo,
@@ -33,6 +34,7 @@ public class Persona implements Identificable, Serializable {
 	 */
 	private int edad;
 	private int numeroCedula;
+	private String codigoPais = CODIGO_ISO_PARAGUAY;
 
 	public Persona() {
 		// TODO Auto-generated constructor stub
@@ -91,7 +93,7 @@ public class Persona implements Identificable, Serializable {
 	public void setNumeroCedula(int numeroCedula) {
 		this.numeroCedula = numeroCedula;
 	}
-	
+
 	@Override
 	public String toString() {
 		return getNombre() + " " + getApellido();
@@ -99,13 +101,31 @@ public class Persona implements Identificable, Serializable {
 
 	public String getNroIdentidad() {
 		// TODO Auto-generated method stub
-//		return ""+getNumeroCedula();
+		// return ""+getNumeroCedula();
 		return Integer.toString(getNumeroCedula());
 	}
 
 	public String getCodigoISOPais() {
 		// TODO Auto-generated method stub
-		return CODIGO_ISO_PARAGUAY;
+		return codigoPais;
 	}
+
+	public String getCodigoPais() {
+		return codigoPais;
+	}
+
+	public void setCodigoPais(String codigoPais) {
+		this.codigoPais = codigoPais;
+	}
+
+	public static void tratarNacionalidadException(NacionalidadException e) {
+		System.out
+				.println("Al inscribir un alumno ocurrio el siguiente problema:"
+						+ e.getMessage());
+		e.printStackTrace();
+
+	}
+
+	// public abstract String getReligion();
 
 }

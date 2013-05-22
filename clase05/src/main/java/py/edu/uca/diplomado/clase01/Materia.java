@@ -1,10 +1,15 @@
 package py.edu.uca.diplomado.clase01;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import py.edu.uca.diplomado.clase02.Alumno;
 import py.edu.uca.diplomado.clase02.Auto;
+import py.edu.uca.diplomado.clase02.Persona;
 import py.edu.uca.diplomado.clase02.Profesor;
+import py.edu.uca.diplomado.clase04.identidad.Identificable;
+import py.edu.uca.diplomado.clase05.exception.EdadInsuficienteException;
+import py.edu.uca.diplomado.clase05.exception.NacionalidadException;
 
 public class Materia {
 	/*
@@ -33,7 +38,6 @@ public class Materia {
 	 */
 	private String codigo;
 	private String descripcion;
-
 
 	/*
 	 * Una lista (la Clase Java Arraylist, que contendrá a los alumnos
@@ -65,6 +69,7 @@ public class Materia {
 		System.out.println(new String("Hello World!"));
 		java1.inicializarMateria();
 
+		// Persona guardia = new Persona();
 		System.out.println("Alumno: " + java1.getAlumno().getNombre());
 		System.out.println("Profesor: " + java1.getProfesor().getNombre());
 	}
@@ -86,6 +91,21 @@ public class Materia {
 		System.out.println("Alumno: " + getAlumno());
 		System.out.println("Profesor: " + getProfesor());
 
+		reservarSilla(getAlumno());
+		reservarSilla(getProfesor());
+
+	}
+
+	public void reservarSilla(Persona persona) {
+		System.out.println("Silla reservada: " + persona);
+		if (persona instanceof Profesor) {
+			boolean resultad = reservarProyector(persona, getCodigo());
+		}
+	}
+
+	private boolean reservarProyector(Persona persona, String codigo2) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	public String getCodigo() {
@@ -130,6 +150,17 @@ public class Materia {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+
+	public void inscribirPersona(Alumno alumno2) throws NacionalidadException, IOException {
+		if (!Identificable.CODIGO_ISO_PARAGUAY.equals(alumno2.getCodigoISOPais())) {
+			throw new NacionalidadException(
+					"Sólo se aceptan alumnos de nacionalidad Paraguaya. El alumno que intento inscribirse es: "
+							+ alumno2.toString() + " y tiene nacionalidad " + alumno2.getCodigoPais());
+		} else {
+			System.out.println("Inscribiendo a: " + alumno2);
+		}
+
 	}
 
 }

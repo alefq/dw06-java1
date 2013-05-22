@@ -62,4 +62,5 @@ public class Alumno extends Persona implements Serializable, Volador {
 		System.out.println("Volando Alumno");
 		
 	}
+	
 }

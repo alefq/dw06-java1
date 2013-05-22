@@ -16,8 +16,12 @@ public class Superman extends Persona implements Volador, Peleador, Cotizable {
 	private static final long serialVersionUID = -1702204164231353048L;
 
 	public static void main(String[] args) {
-		Volador volador = new Superman();
+		Superman chila = new Superman();
+		Volador volador = chila;
 		volador.volar();
+		
+		Peleador peleador =  chila; //Upcasting
+		peleador.pelear();
 		//
 		// Peleador peleador=new Superman();
 		// peleador.pelear();
