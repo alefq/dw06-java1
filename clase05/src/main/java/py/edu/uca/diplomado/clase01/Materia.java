@@ -152,11 +152,24 @@ public class Materia {
 		this.descripcion = descripcion;
 	}
 
-	public void inscribirPersona(Alumno alumno2) throws NacionalidadException, IOException {
-		if (!Identificable.CODIGO_ISO_PARAGUAY.equals(alumno2.getCodigoISOPais())) {
+	public void inscribirPersona(Alumno alumno2) throws NacionalidadException,
+			IOException {
+		/*
+		 * Simulamos que es una inscripción para becas y sólo permitimos
+		 * inscripción de alumnos con nacionalidad paraguaya
+		 */
+		if (!Identificable.CODIGO_ISO_PARAGUAY.equals(alumno2
+				.getCodigoISOPais())) {
+			/*
+			 * Cuándo no tiene el código ISO de Paraguay, creamos una nueva
+			 * excepción y agregamos un mensaje explicativo utilizando el
+			 * constructor que recibe un String
+			 */
 			throw new NacionalidadException(
 					"Sólo se aceptan alumnos de nacionalidad Paraguaya. El alumno que intento inscribirse es: "
-							+ alumno2.toString() + " y tiene nacionalidad " + alumno2.getCodigoPais());
+							+ alumno2.toString()
+							+ " y tiene nacionalidad "
+							+ alumno2.getCodigoPais());
 		} else {
 			System.out.println("Inscribiendo a: " + alumno2);
 		}

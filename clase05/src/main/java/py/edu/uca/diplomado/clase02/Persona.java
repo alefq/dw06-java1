@@ -119,13 +119,15 @@ public abstract class Persona implements Identificable, Serializable {
 	}
 
 	public static void tratarNacionalidadException(NacionalidadException e) {
+		/*
+		 * En ciertos casos se puede generalizar el tratamiento de excetions en
+		 * una utilidad como esta, en un método static
+		 */
 		System.out
 				.println("Al inscribir un alumno ocurrio el siguiente problema:"
 						+ e.getMessage());
 		e.printStackTrace();
 
 	}
-
-	// public abstract String getReligion();
 
 }

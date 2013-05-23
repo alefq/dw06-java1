@@ -1,6 +1,15 @@
 package py.edu.uca.diplomado.clase05.exception;
 
 public class NacionalidadException extends Exception {
+	/*
+	 * Creamos una excepción, con la que vamos identificar los problemas de
+	 * inscripción que tengan que ver con la nacionalidad
+	 */
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6131587669944460543L;
 
 	public NacionalidadException() {
 		// TODO Auto-generated constructor stub

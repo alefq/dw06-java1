@@ -6,6 +6,7 @@ import py.edu.uca.diplomado.clase01.Materia;
 import py.edu.uca.diplomado.clase02.Alumno;
 import py.edu.uca.diplomado.clase02.Persona;
 import py.edu.uca.diplomado.clase02.Profesor;
+import py.edu.uca.diplomado.clase04.identidad.Identificable;
 import py.edu.uca.diplomado.clase05.exception.NacionalidadException;
 
 public class InscripcionApp {
@@ -31,8 +32,8 @@ public class InscripcionApp {
 		Alumno alumno2 = new Alumno("Monica", "Geller", 17);
 
 		alumno2.setNumeroMatricula(1235);
-		alumno2.setCodigoPais("AR");
-		
+		alumno2.setCodigoPais(Identificable.CODIGO_ISO_BRASIL);
+
 		/* Asignamos el profesor */
 		poojava.setProfesor(profesor);
 		/* Asignamos el nombre de la materia */
@@ -47,7 +48,7 @@ public class InscripcionApp {
 
 		/* Encapsulamos la forma de inscribir alumnos */
 
-		inscribirAlumnos(poojava, alumno, alumno2);
+		InscripcionApp.inscribirAlumnos(poojava, alumno, alumno2);
 
 		/*
 		 * Invocamos el método toString de la materia, para imprimir en consola
@@ -57,12 +58,29 @@ public class InscripcionApp {
 
 	}
 
-	private static void inscribirAlumnos(Materia poojava, Alumno alumno,
+	public static void inscribirAlumnos(Materia poojava, Alumno alumno,
 			Alumno alumno2) {
 		try {
+			/* Esta línea inscribirá normalmente un alumno */
 			poojava.inscribirPersona(alumno);
+			/*
+			 * Esta línea arrojará una excepción porque el alumno2 no tiene la
+			 * nacionalidad permitida
+			 */
 			poojava.inscribirPersona(alumno2);
 		} catch (NacionalidadException e) {
+			/*
+			 * Se puede tratar la excepción en un handler dentro del bloque
+			 * catch
+			 */
+			System.out
+					.println("Al inscribir un alumno ocurrio el siguiente problema:"
+							+ e.getMessage());
+			e.printStackTrace();
+			/*
+			 * Para casos generalizables se puede crear una utilidad para tratar
+			 * las excepciones
+			 */
 			Persona.tratarNacionalidadException(e);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

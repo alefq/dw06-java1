@@ -3,6 +3,9 @@ package py.edu.uca.diplomado.clase05.instrumento;
 public class Note {
 
 	private Double frecuencia;
+	/**
+	 * Definimos un tipo de Nota musical como una constante
+	 */
 	public static final Note MIDDLE_C = new Note();
 
 	public void setFrecuencia(Double frecuencia) {
