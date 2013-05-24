@@ -7,6 +7,7 @@ import java.util.Map;
 
 import py.edu.uca.diplomado.clase01.Materia;
 import py.edu.uca.diplomado.clase02.Alumno;
+import py.edu.uca.diplomado.clase02.Persona;
 
 public class ColeccionesUtil {
 
@@ -24,13 +25,13 @@ public class ColeccionesUtil {
 		Iterator<Alumno> Alumnos = alumnosMaterias.keySet().iterator();
 		while (Alumnos.hasNext()) {
 			/* Iteramos sobre las Alumnos */
-			Alumno Alumno = Alumnos.next();
+			Alumno alumno = Alumnos.next();
 			/*
 			 * Por medio de los Generics podemso saber que los valores
 			 * almacenados serán de tipo ArrayList de Alumnos
 			 */
-			ArrayList<Materia> materias = alumnosMaterias.get(Alumno);
-			System.out.println("Alumno: " + Alumno.getNombre());
+			ArrayList<Materia> materias = alumnosMaterias.get(alumno);
+			System.out.println("Alumno: " + alumno.getNombre());
 			System.out.println("Materias :" + materias);
 			System.err.println("---");
 		}
@@ -55,6 +56,11 @@ public class ColeccionesUtil {
 			System.out.println("   valor :" + valor.toString());
 			System.err.println("---");
 		}
+	}
+
+	public static void auditar(Persona persona) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

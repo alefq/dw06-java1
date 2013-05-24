@@ -25,18 +25,23 @@ public class PruebaColeccionesApp {
 	public static void main(String[] args) {
 		PruebaColeccionesApp app = new PruebaColeccionesApp();
 		/* Creamos dos Alumnos que seran las Claves para el mapa */
-		Alumno Alumno = new Alumno("Ale", "F", 1);
-		Alumno Alumno2 = new Alumno("Awi", "F", 1);
+		Alumno alumno1 = new Alumno("Ale", "F", 1);
+		Alumno alumno2 = new Alumno("Awi", "F", 1);
 		/* Creamos una lista de materias */
-		ArrayList<Materia> listaMaterias = new ArrayList<Materia>();
-		listaMaterias.add(new Materia("POO"));
-		listaMaterias.add(new Materia("LP1"));
+		ArrayList<Materia> listaMaterias1 = new ArrayList<Materia>();
+		listaMaterias1.add(new Materia("POO"));
+		listaMaterias1.add(new Materia("LP1"));
+		
+		ArrayList<Materia> listaMaterias2 = new ArrayList<Materia>();
+		listaMaterias2.add(new Materia("POO"));
+		listaMaterias2.add(new Materia("LP1"));
+		listaMaterias2.add(new Materia("JAVA1"));
 		/*
 		 * Guardamos en el mapa de nuestra aplicación de pruebas, para ambas
 		 * Alumnos, la misma lista de materias
 		 */
-		app.getAlumnosMaterias().put(Alumno, listaMaterias);
-		app.getAlumnosMaterias().put(Alumno2, listaMaterias);
+		app.getAlumnosMaterias().put(alumno1, listaMaterias1);
+		app.getAlumnosMaterias().put(alumno2, listaMaterias2);
 		/* Aquí guardamos un valor en el mapa "simple" */
 		app.getCodigoNombre().put(10l, "Curso POO y Java");
 		/* Imprimimos la lista de materias por alumno */

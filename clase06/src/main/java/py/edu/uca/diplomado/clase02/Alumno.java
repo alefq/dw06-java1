@@ -24,6 +24,16 @@ public class Alumno extends Persona implements Serializable, Volador {
 		super(nombre, apellido, edad);
 	}
 
+	public Alumno(int numeroCedula, String nombre) {
+		super(numeroCedula, nombre);
+		// TODO Auto-generated constructor stub
+	}
+
+	public Alumno(String nombre, String apellido, int edad, int nroCedula) {
+		super(nombre, apellido, edad, nroCedula);
+		// TODO Auto-generated constructor stub
+	}
+
 	public Alumno() {
 		/*
 		 * invocamos al constructor de la super clase (clase padre), en este
@@ -45,7 +55,7 @@ public class Alumno extends Persona implements Serializable, Volador {
 		// return getNombre() + " " + getApellido() + "(" + getNumeroMatricula()
 		// + ")";
 		getPassword();
-		return super.toString() + "(" + getNumeroMatricula() + ")";
+		return super.toString() + "(" + getNumeroMatricula() + ")" + getNumeroCedula();
 	}
 
 	private String getPassword() {

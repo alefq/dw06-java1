@@ -2,12 +2,11 @@ package py.edu.uca.diplomado.clase06.colecciones;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Vector;
 
-import py.edu.uca.diplomado.clase01.Auto;
+import py.edu.uca.diplomado.clase01.Vehiculo;
 import py.edu.uca.diplomado.clase02.Alumno;
 import py.edu.uca.diplomado.clase02.Persona;
 
@@ -18,27 +17,29 @@ public class PersonaApp {
 		Persona person2 = new Alumno("Ale", "FQ", 36);
 		System.out.println("persona2 = " + person2.getNombre());
 
-		Vector<Auto> autos = new Vector<Auto>();
-		for (int i = 0; i < 7; i++)
-			autos.addElement(new Auto(i));
+		ArrayList<Vehiculo> autosArray = new ArrayList<Vehiculo>();
+		for (int i = 0; i < 70; i++)
+			autosArray.add(new Vehiculo(i));
 		// No hay ningun problema en añadir una persona a los autos
 		// autos.addElement(new Persona("", "", 7));
-		Iterator<Auto> itAutos = autos.iterator();
+		Iterator<Vehiculo> itAutos = autosArray.iterator();
 		System.out.println("USando iterador");
 		while (itAutos.hasNext()) {
-			Auto auto = itAutos.next();
-			System.out.println(auto);
+			Vehiculo vehiculo = itAutos.next();
+			System.out.println(vehiculo);
 		}
 		System.err.println("Usando for compacto");
-		for (Auto autoIteracion : autos) {
+		for (Vehiculo autoIteracion : autosArray) {
 			System.out.println(autoIteracion);
 		}
 		System.out.println("USando for con el size");
-		for (int i = 0; i < autos.size(); i++)
-			((Auto) autos.elementAt(i)).imprimirInfo();
+		for (int i = 0; i < autosArray.size(); i++){
+			Vehiculo autoFor = autosArray.get(i);
+			autoFor.imprimirInfo();
+		}
 		// El Auto solamente es detectado en tiempo de ejecucion
 
-		pruebaActores2();
+		pruebaActores();
 	}
 
 	private static void pruebaActores() {
@@ -47,11 +48,40 @@ public class PersonaApp {
 
 		/* Leemos un entero de la consola */
 		nroActores = in.nextInt();
-		LinkedList actors = new LinkedList();
+		ArrayList actors = new ArrayList();
 		for (int i = 0; i < nroActores; ++i) {
 			actors.add("Actor #" + i);
 		}
 
+		Comparator<Persona> comparadorPorEdad = new Comparator<Persona>() {
+			public int compare(Persona persona1, Persona persona2) {
+				int retorno = 0;
+				if (persona1.getEdad() > persona2.getEdad())
+					retorno = 1;
+				else if (persona1.getEdad() < persona2.getEdad())
+					retorno = -1;
+
+				return retorno;
+			}
+		};
+		Collections.sort(actors, comparadorPorEdad);
+
+		
+		Comparator<Persona> comparadorPorNroCedula = new Comparator<Persona>() {
+			public int compare(Persona persona1, Persona persona2) {
+				int retorno = 0;
+				if (persona1.getNumeroCedula() > persona2.getNumeroCedula()) {
+					retorno = 1;
+				} else if (persona1.getNumeroCedula() > persona2.getNumeroCedula()) {
+					retorno = -1;
+				} else {
+					retorno = 0;
+				}
+				return retorno;
+			}
+		};
+		Collections.sort(actors, comparadorPorNroCedula);
+		
 		Collections.sort(actors);
 		System.out.println("\n\nA sorted list of actors");
 		System.out.println(actors);
@@ -80,11 +110,13 @@ public class PersonaApp {
 		/* Leemos un entero de la consola */
 		nroActores = in.nextInt();
 		ArrayList<Alumno> actors = new ArrayList<Alumno>();
+		ArrayList<ArrayList<Alumno>> matrizActors = new ArrayList<ArrayList<Alumno>>();
+
 		for (int i = 0; i < nroActores; ++i) {
 			Integer edad = new Integer(0);
 			Double random = Math.random() * 100;
 			edad = random.intValue();
-			actors.add(new Alumno("Actor #" + i, "", edad));
+			actors.add(new Alumno("Actor #" + i, "", edad, edad));
 		}
 
 		/*

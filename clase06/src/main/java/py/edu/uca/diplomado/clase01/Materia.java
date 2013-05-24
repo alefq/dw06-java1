@@ -26,7 +26,7 @@ public class Materia {
 	 * con el modificador "static" estamos haciendo que petenezca a toda la
 	 * Clase, es decir el valor es compartido por todas las instancias
 	 */
-	public static Auto transporte;
+	public static Vehiculo transporte;
 
 	private Alumno alumno;
 	private Profesor profesor;
@@ -74,7 +74,7 @@ public class Materia {
 
 	public void inicializarMateria() {
 		/* Creamos una nueva instancia de la clase Auto */
-		transporte = new Auto();
+		transporte = new Vehiculo();
 		/* Enviamos el mensaje de arrancar a la clase recientemente creada */
 		transporte.arrancar();
 
@@ -172,6 +172,10 @@ public class Materia {
 			System.out.println("Inscribiendo a: " + alumno2);
 		}
 
+	}
+	
+	public String toString() {
+		return getCodigo();
 	}
 
 }

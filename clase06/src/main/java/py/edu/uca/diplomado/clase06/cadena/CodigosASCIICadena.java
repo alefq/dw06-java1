@@ -16,7 +16,7 @@ public class CodigosASCIICadena {
 
 	public static void main(String[] args) {
 
-		String sCadena = "Esto es una cadena de texto";
+		String sCadena = "Esto es una cadena de texto Aa";
 
 		for (int x = 0; x < sCadena.length(); x++)
 			System.out.println(sCadena.charAt(x) + " = "

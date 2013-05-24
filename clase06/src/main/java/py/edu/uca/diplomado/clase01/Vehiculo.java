@@ -2,7 +2,7 @@ package py.edu.uca.diplomado.clase01;
 
 import java.io.Serializable;
 
-public class Auto implements Serializable {
+public class Vehiculo implements Serializable {
 	/**
 	 * 
 	 */
@@ -14,7 +14,7 @@ public class Auto implements Serializable {
 	private int velocidad;
 	private int chapa;
 
-	public Auto() {
+	public Vehiculo() {
 		/*
 		 * Los constructores se utilizan para brindar distintas formas de crear
 		 * instancias de una clase e inicializar sus valores
@@ -24,7 +24,7 @@ public class Auto implements Serializable {
 		setModelo("Sin modelo");
 	}
 
-	public Auto(int i) {
+	public Vehiculo(int i) {
 		setChapa(i);
 	}
 
@@ -85,5 +85,10 @@ public class Auto implements Serializable {
 
 	public void imprimirInfo() {
 		System.out.println("Auto con chapa nro: " + getChapa());
+	}
+	
+	@Override
+	public String toString() {
+		return "Auto con chapa nro: " + getChapa();
 	}
 }

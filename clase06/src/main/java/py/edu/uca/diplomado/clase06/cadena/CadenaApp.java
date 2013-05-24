@@ -9,14 +9,14 @@ public class CadenaApp {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		pruebasVariasString();
+		pruebasVariasString();
 //		pruebaInmutabilidad();
 //		pruebaTokens();
-		String strDatos = "6.3,6.2,6.4,6.2";
-		String [] partiods = strDatos.split(",");
-		for (int i = 0; i < partiods.length; i++) {
-			System.out.println(partiods[i]);
-		}
+//		String strDatos = "6.3,6.2,6.4,6.2";
+//		String [] partiods = strDatos.split(",");
+//		for (int i = 0; i < partiods.length; i++) {
+//			System.out.println(partiods[i]);
+//		}
 	}
 
 	protected static void pruebaTokens() {
@@ -78,7 +78,7 @@ public class CadenaApp {
 		System.out.println("longitud " + str.length());
 		/* comienza y termina por... */
 		str = "El primer programa";
-		System.out.println("comienza por El      " + str.startsWith("El"));
+		System.out.println("comienza por El      " + str.startsWith("A"));
 		System.out.println("termina por programa " + str.endsWith("programa"));
 		/* posición de un carácter */
 		int pos = str.indexOf('p');
@@ -87,7 +87,7 @@ public class CadenaApp {
 		 * segunda ocuurencia de p pos = str.indexOf('p', pos + 1); /*
 		 * comparación
 		 */
-		str = "Tomás";
+		str = "Arnaldo";
 		System.out.println("Orden alfabético " + str.compareTo("Alberto"));
 		str = "Alberto";
 		System.out.println("Orden alfabético " + str.compareTo("Tomás"));
@@ -97,9 +97,9 @@ public class CadenaApp {
 		System.out.println("Substring " + str.substring(12));
 		System.out.println("Substring " + str.substring(3, 11));
 		/* eliminar los espacios en blanco */
-		str = "  12 ";
-		System.out.println("string original               " + str);
-		System.out.println("string sin espacios en blanco " + str.trim());
+		str = "            12     monos         ";
+		System.out.println("string original:<" + str+ ">");
+		System.out.println("string sin espacios en blanco:<" + str.trim()+ ">");
 		/* convertir un número en string */
 		int valor = 24;
 		str = String.valueOf(valor);

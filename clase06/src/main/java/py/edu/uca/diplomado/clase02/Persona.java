@@ -4,8 +4,9 @@ import java.io.Serializable;
 
 import py.edu.uca.diplomado.clase04.identidad.Identificable;
 import py.edu.uca.diplomado.clase05.exception.NacionalidadException;
+import py.edu.uca.diplomado.clase06.util.ColeccionesUtil;
 
-public abstract class Persona implements Identificable, Serializable,
+public class Persona implements Identificable, Serializable,
 		Comparable<Persona> {
 	/*
 	 * Convertimos nuestra clase Persona al estandar Java Bean. Implementamos la
@@ -50,6 +51,18 @@ public abstract class Persona implements Identificable, Serializable,
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
+	}
+	
+	public Persona(String nombre, String apellido, int edad, int nroCedula) {
+		/*
+		 * Este constructor fue generado automáticamente mediante el menú
+		 * contextual del editor de códigos fuente Source/Generate constructor
+		 * using fields...
+		 */
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.edad = edad;
+		this.numeroCedula = nroCedula;
 	}
 
 	public Persona(int numeroCedula, String nombre) {
@@ -97,6 +110,7 @@ public abstract class Persona implements Identificable, Serializable,
 
 	@Override
 	public String toString() {
+		ColeccionesUtil.auditar(this);
 		return getNombre() + " " + getApellido();
 	}
 
@@ -131,7 +145,16 @@ public abstract class Persona implements Identificable, Serializable,
 
 	}
 
-	public int compareTo(Persona o) {
-		return getNombre().compareTo(o.getNombre());
+	public int compareTo(Persona otraPersona) {
+//		int retorno = 0;
+//		if (getNumeroCedula() > otraPersona.getNumeroCedula()) {
+//			retorno = 1;
+//		} else if (otraPersona.getNumeroCedula() > getNumeroCedula()) {
+//			retorno = -1;
+//		} else {
+//			retorno = 0;
+//		}
+//		return retorno;
+		return getNombre().compareTo(otraPersona.getNombre()) * -1;
 	}
 }
