@@ -113,7 +113,7 @@ public class CadenaApp {
 		double numeroDouble = Double.valueOf(str).doubleValue();
 		System.out.println("string --> número " + numeroDouble);
 
-		/* espera la pulsación de una tecla y luego RETORNO */
+		/* espera la pulsación de una tecla y luego RETORNO/ENTER */
 		try {
 			System.in.read();
 		} catch (IOException e) {

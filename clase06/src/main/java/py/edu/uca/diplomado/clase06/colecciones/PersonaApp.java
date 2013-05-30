@@ -12,16 +12,25 @@ import py.edu.uca.diplomado.clase02.Persona;
 
 public class PersonaApp {
 	public static void main(String[] args) {
+		/* En esta línea hacemos un upcasting a Persona */
 		Persona person1 = new Alumno();
 		System.out.println("Nombre= " + person1.getNombre());
 		Persona person2 = new Alumno("Ale", "FQ", 36);
 		System.out.println("persona2 = " + person2.getNombre());
 
+		/*
+		 * Creamos un ArrayList que es una implementación de la interface
+		 * java.util.List
+		 */
 		ArrayList<Vehiculo> autosArray = new ArrayList<Vehiculo>();
 		for (int i = 0; i < 70; i++)
 			autosArray.add(new Vehiculo(i));
-		// No hay ningun problema en añadir una persona a los autos
-		// autos.addElement(new Persona("", "", 7));
+		/* === Generics === */
+		/* No hay ningun problema en añadir una persona o añadir vehículos autos */
+		ArrayList bolsa = new ArrayList();
+		bolsa.add(new Vehiculo(1));
+		bolsa.add(person2);
+
 		Iterator<Vehiculo> itAutos = autosArray.iterator();
 		System.out.println("USando iterador");
 		while (itAutos.hasNext()) {
@@ -33,7 +42,7 @@ public class PersonaApp {
 			System.out.println(autoIteracion);
 		}
 		System.out.println("USando for con el size");
-		for (int i = 0; i < autosArray.size(); i++){
+		for (int i = 0; i < autosArray.size(); i++) {
 			Vehiculo autoFor = autosArray.get(i);
 			autoFor.imprimirInfo();
 		}
@@ -50,29 +59,73 @@ public class PersonaApp {
 		nroActores = in.nextInt();
 		ArrayList actors = new ArrayList();
 		for (int i = 0; i < nroActores; ++i) {
-			actors.add("Actor #" + i);
+			/* Obtenemos un número aleatorio */
+			Double random = Math.random();
+			actors.add("Actor #" + random);
 		}
 
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		for (int i = 0; i < nroActores; ++i) {
+			/* Obtenemos un número aleatorio */
+			Double random = Math.random();
+			/*
+			 * Como el Math.random() nos devuelve un tipo de dato Double,
+			 * hacemos uso del método intValue para obtener su valor Integer
+			 */
+			personas.add(new Persona(random.intValue(), "Persona #" + random));
+		}
+
+		/*
+		 * Hay dos formas de personalizar la forma en como se ordena una clase
+		 * que nosotros definimos. Una es definiendo una implemnetación de
+		 * Comparator y colocar dentro la lógica para las comparaciones
+		 */
 		Comparator<Persona> comparadorPorEdad = new Comparator<Persona>() {
+			/*
+			 * La interfaz java.util.Comparator define un único método que debe
+			 * devolver un entero
+			 */
 			public int compare(Persona persona1, Persona persona2) {
 				int retorno = 0;
-				if (persona1.getEdad() > persona2.getEdad())
+				if (persona1.getEdad() > persona2.getEdad()) {
+					/*
+					 * Si el primer parámetro, persona1 tiene mayor edad que el
+					 * segundo, retornamos un valor positivo.
+					 */
 					retorno = 1;
-				else if (persona1.getEdad() < persona2.getEdad())
+					/*
+					 * Otra posible implementación es devolver la diferencia
+					 * entre edades.
+					 */
+					// retorno = persona1.getEdad() - persona2.getEdad();
+				} else if (persona1.getEdad() < persona2.getEdad()) {
+					/*
+					 * En caso de que la persona2 sea mayor, se debe retornar un
+					 * valor negativo
+					 */
 					retorno = -1;
-
+					/* Otra posible implementación es retornar la diferencia */
+					// retorno = persona1.getEdad() - persona2.getEdad();
+				}
+				/*
+				 * Para este caso en particular, podríamos haber retornado
+				 * directamente la diferencia, ya que cumpliría con nuestro
+				 * contrato, de retornar valores (+), (-), o 0 en caso d que sea
+				 * la edad mayor, menor o igual
+				 */
 				return retorno;
 			}
 		};
-		Collections.sort(actors, comparadorPorEdad);
+		Collections.sort(personas, comparadorPorEdad);
 
-		
+		/* Otra implementación que ordenará personas por nro. de cédula */
 		Comparator<Persona> comparadorPorNroCedula = new Comparator<Persona>() {
 			public int compare(Persona persona1, Persona persona2) {
 				int retorno = 0;
 				if (persona1.getNumeroCedula() > persona2.getNumeroCedula()) {
 					retorno = 1;
-				} else if (persona1.getNumeroCedula() > persona2.getNumeroCedula()) {
+				} else if (persona1.getNumeroCedula() > persona2
+						.getNumeroCedula()) {
 					retorno = -1;
 				} else {
 					retorno = 0;
@@ -80,8 +133,8 @@ public class PersonaApp {
 				return retorno;
 			}
 		};
-		Collections.sort(actors, comparadorPorNroCedula);
-		
+		Collections.sort(personas, comparadorPorNroCedula);
+
 		Collections.sort(actors);
 		System.out.println("\n\nA sorted list of actors");
 		System.out.println(actors);
