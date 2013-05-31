@@ -3,16 +3,26 @@ package py.edu.uca.diplomado.clase07.io;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 
 /* Obtenido de:
  * http://chuwiki.chuidiang.org/index.php?title=Lectura_y_Escritura_de_Ficheros_en_Java */
 public class LeeFichero {
 	public static void main(String[] arg) {
-		 LeeFichero leer = new LeeFichero();
-		 leer.leer("/etc/hosts");
-		byte[] leidos = ArchivoUtil.leerArchivoBinario("/etc/hosts");
-		String stringLeido = new String(leidos);
-		System.out.println("Leido: " + stringLeido);
+		LeeFichero leer = new LeeFichero();
+		String nombreArchivo = "/etc/hosts";
+		leer.leer(nombreArchivo);
+		/* Definimos una referencia a un array de bytes para usar de buffer */
+		byte[] leidos;
+		try {
+			leidos = ArchivoUtil.leerArchivoBinario(nombreArchivo);
+			String stringLeido = new String(leidos);
+			System.out.println("Leido: " + stringLeido);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public void leer(String ruta) {

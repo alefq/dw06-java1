@@ -24,8 +24,9 @@ public class ArchivoUtil {
 	 * 
 	 * @param ruta
 	 * @return
+	 * @throws IOException
 	 */
-	public static String leerArchivoTexto(String ruta) {
+	public static String leerArchivoTexto(String ruta) throws IOException {
 		String stringLeido = new String(leerArchivoBinario(ruta));
 		return stringLeido;
 	}
@@ -36,10 +37,18 @@ public class ArchivoUtil {
 	 * 
 	 * @param ruta
 	 * @return
+	 * @throws IOException
 	 */
-	public static byte[] leerArchivoBinario(String ruta) {
+	public static byte[] leerArchivoBinario(String ruta) throws IOException {
+		/* Definimos la referencia para el buffer de lectura */
 		byte[] retorno = null;
+		/* Definimos la referencia a un archivo */
 		File archivo = null;
+		/*
+		 * Definimos la implementación de la clase abstracta InputStream, en
+		 * este caso leeremos del sistema de archivos, por lo que usamos la
+		 * clase FileInputStream
+		 */
 		FileInputStream fileInput = null;
 
 		try {
@@ -55,10 +64,9 @@ public class ArchivoUtil {
 			 * tamanho que tenga el archivo
 			 */
 			retorno = new byte[(int) tamanho];
+			/* Con este método, leemos "tamanho" bytes, en el buffer "retorno" */
 			fileInput.read(retorno);
 
-		} catch (IOException e) {
-			e.printStackTrace();
 		} finally {
 			/*
 			 * En el finally cerramos el fichero, para asegurarnos que se cierra
@@ -81,6 +89,11 @@ public class ArchivoUtil {
 
 	public static void escribirArchivo(String ruta, String datos)
 			throws IOException {
+		/*
+		 * Las clases Buffered... son implementaciones que hacen uso de un
+		 * buffer para optimizar los accesos a disco. Para casos de archivos de
+		 * texto, se recomienda usar las clases descendientes de Writer
+		 */
 		BufferedWriter bwriter = new BufferedWriter(new FileWriter(ruta));
 		bwriter.write(datos);
 		bwriter.close();
@@ -89,6 +102,7 @@ public class ArchivoUtil {
 
 	public static void escribirArchivoBinario(String ruta, byte[] datos)
 			throws IOException {
+		/* Para archivos binarios, se recomienda usar el FileOutputStream */
 		BufferedOutputStream bout = new BufferedOutputStream(
 				new FileOutputStream(ruta));
 		bout.write(datos);
@@ -101,22 +115,34 @@ public class ArchivoUtil {
 			/* Si el archivo no existe, creamos uno nuevo */
 			dest.createNewFile();
 		}
-		/*Definimos el stream para lectura*/
+		/* Definimos el stream para lectura */
 		InputStream in = null;
-		/*Definimos el outputStrem*/
+		/* Definimos el outputStrem al que escribiremos */
 		OutputStream out = null;
 		try {
+			/*
+			 * Usamos la pareja File... porque leeremos y escribiremos a
+			 * archivos
+			 */
 			in = new FileInputStream(source);
 			out = new FileOutputStream(dest);
+			/*
+			 * Dependiendo del tamaño del buffer se harán más o menos pasadas,
+			 * según el tamaño del archivo
+			 */
+			// byte[] buf = new byte[10];
 			byte[] buf = new byte[1024];
 			int len;
 
+			/* Leo 1kB = 1024 bytes */
 			len = in.read(buf);
 			while (len > 0) {
+				System.out.println("Escribiendo " + len + " bytes");
 				out.write(buf, 0, len);
 				len = in.read(buf);
 			}
 		} finally {
+			/* Finalmente ocurra o no excepciones, cerramos ambos streams */
 			in.close();
 			out.close();
 		}
