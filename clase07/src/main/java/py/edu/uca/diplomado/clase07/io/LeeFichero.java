@@ -8,9 +8,9 @@ import java.io.FileReader;
  * http://chuwiki.chuidiang.org/index.php?title=Lectura_y_Escritura_de_Ficheros_en_Java */
 public class LeeFichero {
 	public static void main(String[] arg) {
-		// LeeFichero leer = new LeeFichero();
-		// leer.leer("/tmp/archivo.txt");
-		byte[] leidos = ArchivoUtil.leerArchivoBinario("/tmp/prueba.txt");
+		 LeeFichero leer = new LeeFichero();
+		 leer.leer("/etc/hosts");
+		byte[] leidos = ArchivoUtil.leerArchivoBinario("/etc/hosts");
 		String stringLeido = new String(leidos);
 		System.out.println("Leido: " + stringLeido);
 	}

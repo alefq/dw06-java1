@@ -30,6 +30,8 @@ public class PersonaApp {
 		ArrayList bolsa = new ArrayList();
 		bolsa.add(new Vehiculo(1));
 		bolsa.add(person2);
+		
+		Vehiculo auto = (Vehiculo) bolsa.get(0);
 
 		Iterator<Vehiculo> itAutos = autosArray.iterator();
 		System.out.println("USando iterador");

@@ -4,10 +4,11 @@ import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 /**
  * Utilidad (clase estática) para agrupar todas las funcionalidades que traten
@@ -78,7 +79,8 @@ public class ArchivoUtil {
 		return retorno;
 	}
 
-	public static void escribirArchivo(String ruta, String datos) throws IOException {
+	public static void escribirArchivo(String ruta, String datos)
+			throws IOException {
 		BufferedWriter bwriter = new BufferedWriter(new FileWriter(ruta));
 		bwriter.write(datos);
 		bwriter.close();
@@ -91,6 +93,33 @@ public class ArchivoUtil {
 				new FileOutputStream(ruta));
 		bout.write(datos);
 		bout.close();
+
+	}
+
+	public static void copiarArchivo(File source, File dest) throws IOException {
+		if (!dest.exists()) {
+			/* Si el archivo no existe, creamos uno nuevo */
+			dest.createNewFile();
+		}
+		/*Definimos el stream para lectura*/
+		InputStream in = null;
+		/*Definimos el outputStrem*/
+		OutputStream out = null;
+		try {
+			in = new FileInputStream(source);
+			out = new FileOutputStream(dest);
+			byte[] buf = new byte[1024];
+			int len;
+
+			len = in.read(buf);
+			while (len > 0) {
+				out.write(buf, 0, len);
+				len = in.read(buf);
+			}
+		} finally {
+			in.close();
+			out.close();
+		}
 
 	}
 

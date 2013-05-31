@@ -1,6 +1,7 @@
 package py.edu.uca.diplomado.clase07.io;
 
 import java.io.File;
+import java.io.IOException;
 
 public class ArchivosApp {
 
@@ -9,16 +10,31 @@ public class ArchivosApp {
 	 */
 	public static void main(String[] args) {
 		ArchivosApp app = new ArchivosApp();
-		app.pruebaListarArchivos("/");
+		app.pruebaListarArchivos("/usr");
 		String rutaArchivo = "/etc/hosts";
 		app.mostrarPropiedadesDeFile(rutaArchivo);
+		String destino = "/tmp/copia.txt";
+		File origen = new File(rutaArchivo);
+		File destinoCopia = new File(destino);
+		try {
+			ArchivoUtil.copiarArchivo(origen, destinoCopia);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void pruebaListarArchivos(String directorio) {
 		File file = new File(directorio);
-		String files[] = file.list();
-		for (int i = 0; i < files.length; i++) {
-			System.out.println(files[i]);
+		if (file.isDirectory()) {
+			String files[] = file.list();
+			for (int i = 0; i < files.length; i++) {
+				System.out.println(files[i]);
+			}
+		} else
+		{
+			System.out.println("El archivo " + directorio.toString() + " no es un directorio");
+			System.out.println("El archivo " + directorio + " no es un directorio");
 		}
 
 	}
